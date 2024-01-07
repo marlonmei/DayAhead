@@ -34,11 +34,11 @@ Finally, Figure 4 shows the frequency distribution of the day-ahead auction pric
 
 The previous figures already showed that prices also go negative for several hours a year. Negative prices are usually caused by very low demand and high feed-in of renewable energy. A sunny and windy weekend day, for example, can quickly lead to negative prices.
 
-[!Figure 5: Negative Hours](https://github.com/marlonmei/DayAhead/blob/main/images/image5_negative_hours.png)
+![Figure 5: Negative Hours](https://github.com/marlonmei/DayAhead/blob/main/images/image5_negative_hours.png)
 
 Figure 5 visualises the number of negative hours per week. Obviously, weeks with generally high price levels have fewer hours with negative prices, as the data for the end of 2021 and the whole of 2022 show. Overall, 2023 was the year with the most hours with negative prices. At the end of that year, very windy conditions in December were responsible for a high production of wind power plants. However, this is a constant throughout the year. At the end of the year, during the Christmas period, prices turn negative. This is a time when commercial and industrial demand is particularly low. If the low demand is combined with windy days like in 2023, prices can be negative for longer periods.
 
-[!Figure 6: Consecutive Hours](https://github.com/marlonmei/DayAhead/blob/main/images/image6_consecutive_negative_hours.png)
+![Figure 6: Consecutive Hours](https://github.com/marlonmei/DayAhead/blob/main/images/image6_consecutive_negative_hours.png)
 
 Since 2014, the EEG has introduced a rule that if the price is negative for 6 consecutive hours, the power plant operator is not rewarded with a market premium. The 2021 EEG tightens this rule by lowering the cap to 4 consecutive hours. The aim of the rule is to encourage renewable power plants to withdraw from the market during these hours, as they are typically responsible for negative prices. As price levels have normalized in 2023, the number of consecutive six-hour periods with negative prices has also increased, as shown in Figure 6.
 
