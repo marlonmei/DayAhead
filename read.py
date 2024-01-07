@@ -6,12 +6,19 @@ from analysis import find_consecutive_negative, create_time_series_features
 from constants import COLS_MAPPING
 
 
-def load_data(file_name) -> pd.DataFrame:
+def load_data(file_name: str) -> pd.DataFrame:
     data = pd.read_excel(file_name).iloc[1:]
     data.set_index('Datum (MEZ)', inplace=True)
     data = data.rename(columns=COLS_MAPPING)
     return data
 
+def process_data(data: pd.DataFrame) -> pd.DataFrame:
+    data = create_time_series_features(data)
+    data['EMA30'] = data['day_ahead_auction'].ewm(span=30).mean()
+    data['EMA45'] = data['day_ahead_auction'].ewm(span=45).mean()
+    data['EMA15'] = data['day_ahead_auction'].ewm(span=15).mean()
+    data['is_six_consecutive_neg'] = find_consecutive_negative(data['day_ahead_auction'].to_list())
+    return data
 
 if __name__ == '__main__':
     cwd = os.getcwd()
@@ -27,8 +34,5 @@ if __name__ == '__main__':
         yearly_data = load_data(file_name=file_name)
         data = pd.concat([data, yearly_data])
 
-    data = create_time_series_features(data)
-    data['EMA30'] = data['day_ahead_auction'].ewm(span=30).mean()
-    data['EMA15'] = data['day_ahead_auction'].ewm(span=15).mean()
-    data['is_six_consecutive_neg'] = find_consecutive_negative(data['day_ahead_auction'].to_list())
+    data = process_data(data)
     data.to_excel(f'{path_processed}DayAheadAuction.xlsx')
